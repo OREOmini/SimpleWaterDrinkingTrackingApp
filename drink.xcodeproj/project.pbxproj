@@ -13,6 +13,7 @@
 		DE12AF33207F55BD008841AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE12AF32207F55BD008841AB /* Assets.xcassets */; };
 		DE12AF36207F55BD008841AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE12AF34207F55BD008841AB /* LaunchScreen.storyboard */; };
 		DE12AF3E207F577F008841AB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE12AF3D207F577F008841AB /* Extensions.swift */; };
+		DE12AF44207F5EAE008841AB /* drink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE12AF42207F5EAE008841AB /* drink.xcdatamodeld */; };
 		F3C307E6FC20338F05B4A93E /* Pods_drink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7AB57C46BC1C3234B0A2BA6 /* Pods_drink.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +22,13 @@
 		B7AB57C46BC1C3234B0A2BA6 /* Pods_drink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_drink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE12AF28207F55BD008841AB /* drink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE12AF2B207F55BD008841AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE12AF2D207F55BD008841AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE12AF2D207F55BD008841AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DE12AF30207F55BD008841AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE12AF32207F55BD008841AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE12AF35207F55BD008841AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE12AF37207F55BD008841AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE12AF3D207F577F008841AB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DE12AF43207F5EAE008841AB /* drink.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = drink.xcdatamodel; sourceTree = "<group>"; };
 		ECE2F36F2702447C850BF405 /* Pods-drink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drink.release.xcconfig"; path = "Pods/Target Support Files/Pods-drink/Pods-drink.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				DE12AF34207F55BD008841AB /* LaunchScreen.storyboard */,
 				DE12AF37207F55BD008841AB /* Info.plist */,
 				DE12AF3D207F577F008841AB /* Extensions.swift */,
+				DE12AF42207F5EAE008841AB /* drink.xcdatamodeld */,
 			);
 			path = drink;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			files = (
 				DE12AF2E207F55BD008841AB /* ViewController.swift in Sources */,
 				DE12AF3E207F577F008841AB /* Extensions.swift in Sources */,
+				DE12AF44207F5EAE008841AB /* drink.xcdatamodeld in Sources */,
 				DE12AF2C207F55BD008841AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +390,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE12AF42207F5EAE008841AB /* drink.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE12AF43207F5EAE008841AB /* drink.xcdatamodel */,
+			);
+			currentVersion = DE12AF43207F5EAE008841AB /* drink.xcdatamodel */;
+			path = drink.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DE12AF20207F55BC008841AB /* Project object */;
 }
