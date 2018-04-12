@@ -17,10 +17,14 @@ class ViewController: UIViewController {
     var add50Button:CustomedButton?
     var add100Button:CustomedButton?
     var amountLabel:UILabel?
+    var themeColor:UIColor? = .lightGray
     
     var totalAmount:Int?
     
     var standardAmount = 2000
+    
+    var CONCRETE:UIColor = hexStringToUIColor(hex: "#95A5A6")
+    var ASBESTOS:UIColor = hexStringToUIColor(hex: "#7F8C8D")
     
     override func viewWillAppear(_ animated: Bool) {
         let ud = UserDefaults.standard
@@ -57,6 +61,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         totalAmount = getAmount()
+        themeColor = CONCRETE
         setupElement()
     }
 
@@ -76,8 +81,10 @@ class ViewController: UIViewController {
         circleView!.set(colors: .white)
         circleView!.glowMode = .forward
         circleView!.glowAmount = 0
-        circleView!.trackColor = UIColor.lightGray
+        circleView!.trackColor = themeColor!
         circleView!.startAngle = -90
+        circleView!.progressThickness = 0.3
+        circleView!.trackThickness = 0.5
         moveCircle()
         
         let size = 70
@@ -94,21 +101,20 @@ class ViewController: UIViewController {
         }
         
         
-        CustomedButton(frame: CGRect(x: 0, y: 0, width: size, height: size)).add(to: self.view)
+        CustomedButton(frame: CGRect(x: 0, y: 0, width: size, height: size), color: themeColor!)
+            .add(to: self.view)
             .layout { (make) in
                 make.centerX.equalToSuperview()
                 make.bottom.equalTo(circleView!.snp.top)
                 make.width.height.equalTo(size)
         }.config { (view) in
             view.setTitle("reset", for: .normal)
-            view.setTitleColor(.lightGray, for: .normal)
-            view.tintColor = UIColor.lightGray
             view.addTarget(self, action: #selector(reset), for: .touchUpInside)
 
         }
         
         
-        CustomedButton(frame: CGRect(x: 100, y: 100, width: size, height: size))
+        CustomedButton(frame: CGRect(x: 100, y: 100, width: size, height: size), color: themeColor!)
             .add(to: self.view)
             .layout(snpMaker: { (make) in
                 make.top.equalTo((circleView?.snp.bottom)!)
@@ -121,7 +127,7 @@ class ViewController: UIViewController {
         })
         
         
-        CustomedButton(frame: CGRect(x: 100, y: 100, width: size, height: size))
+        CustomedButton(frame: CGRect(x: 100, y: 100, width: size, height: size), color: themeColor!)
             .add(to: self.view)
             .layout(snpMaker: { (make) in
                 make.top.equalTo((circleView?.snp.bottom)!)
@@ -133,7 +139,7 @@ class ViewController: UIViewController {
                 view.addTarget(self, action: #selector(add100), for: .touchUpInside)
             })
         
-        CustomedButton(frame: CGRect(x: 100, y: 300, width: size, height: size))
+        CustomedButton(frame: CGRect(x: 100, y: 300, width: size, height: size), color: themeColor!)
             .add(to: self.view)
             .layout(snpMaker: { (make) in
                 make.top.equalTo((circleView?.snp.bottom)!)
@@ -237,13 +243,13 @@ class ViewController: UIViewController {
 }
 
 class CustomedButton: UIButton {
-    override init(frame: CGRect) {
+    init(frame: CGRect, color: UIColor) {
         super.init(frame: frame)
         self.layer.cornerRadius = frame.width / 2
         self.layer.borderWidth =  4
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        self.setTitleColor(.lightGray, for: .normal)
-        self.tintColor = UIColor.lightGray
+        self.layer.borderColor = color.cgColor
+        self.setTitleColor(color, for: .normal)
+        self.tintColor = color
     }
     
     required init?(coder aDecoder: NSCoder) {
