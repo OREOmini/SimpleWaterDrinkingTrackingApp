@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '322428ECC8C5EC71F14C92233787C7AC'
-               BlueprintName = 'KDCircularProgress'
+               BlueprintIdentifier = '85AAB12E24DB0BEF523A6DDB55FB7611'
+               BlueprintName = 'TTRangeSlider'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'KDCircularProgress.framework'>
+               BuildableName = 'TTRangeSlider.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

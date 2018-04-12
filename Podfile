@@ -8,5 +8,6 @@ target 'drink' do
   # Pods for drink
   pod 'KDCircularProgress'
   pod 'SnapKit', '3.1.2'
+  pod 'TTRangeSlider'
 
 end

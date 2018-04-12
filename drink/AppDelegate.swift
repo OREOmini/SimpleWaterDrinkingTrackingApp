@@ -100,3 +100,87 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+func getDrinkingAmount() -> Int {
+    let app = UIApplication.shared.delegate as! AppDelegate
+    let context = app.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    var num = 0
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        
+        //遍历查询的结果
+        for info in fetchedObjects{
+            num = Int(info.drinkingAmount)
+        }
+    }
+    catch {
+        fatalError("不能保存：\(error)")
+    }
+    
+    return num
+}
+
+func getTotalAmount() -> Int {
+    let app = UIApplication.shared.delegate as! AppDelegate
+    let context = app.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    var num = 0
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        
+        //遍历查询的结果
+        for info in fetchedObjects{
+            print("id=\(info.drinkingAmount)")
+            num = Int(info.totalAmount)
+        }
+    }
+    catch {
+        fatalError("不能保存：\(error)")
+    }
+    
+    return num
+}
+
+func changeCoreDataDrinkingAmountTo(newAmount: Int?) {
+    let app = UIApplication.shared.delegate as! AppDelegate
+    let context = app.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        for info in fetchedObjects{
+            info.drinkingAmount = Int16(newAmount!)
+            try context.save()
+        }
+        
+    } catch {
+        fatalError("不能保存：\(error)")
+    }
+}
+
+func changeCoreDataTotalAmountTo(newAmount: Int?) {
+    let app = UIApplication.shared.delegate as! AppDelegate
+    let context = app.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        for info in fetchedObjects{
+            print("id=\(info.totalAmount)")
+            
+            info.totalAmount = Int16(newAmount!)
+            try context.save()
+        }
+        
+    } catch {
+        fatalError("不能保存：\(error)")
+    }
+}
+
+

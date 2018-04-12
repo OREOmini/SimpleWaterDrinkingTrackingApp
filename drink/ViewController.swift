@@ -11,20 +11,20 @@ import SnapKit
 import KDCircularProgress
 import CoreData
 
+var CONCRETE:UIColor = hexStringToUIColor(hex: "#95A5A6")
+var ASBESTOS:UIColor = hexStringToUIColor(hex: "#7F8C8D")
+
+var themeColor:UIColor? = .lightGray
+
 class ViewController: UIViewController {
     
     var circleView:KDCircularProgress?
-    var add50Button:CustomedButton?
-    var add100Button:CustomedButton?
     var amountLabel:UILabel?
-    var themeColor:UIColor? = .lightGray
+    
     
     var totalAmount:Int?
     
     var standardAmount = 2000
-    
-    var CONCRETE:UIColor = hexStringToUIColor(hex: "#95A5A6")
-    var ASBESTOS:UIColor = hexStringToUIColor(hex: "#7F8C8D")
     
     override func viewWillAppear(_ animated: Bool) {
         let ud = UserDefaults.standard
@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             
             //对象赋值
             amount.drinkingAmount = 0
+            amount.totalAmount = 2000
             
             //保存
             do {
@@ -60,7 +61,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        totalAmount = getAmount()
+        totalAmount = getDrinkingAmount()
+        standardAmount = getTotalAmount()
         themeColor = CONCRETE
         setupElement()
     }
@@ -71,6 +73,7 @@ class ViewController: UIViewController {
     }
     
     func setupElement() {
+        self.view.backgroundColor = .white
         circleView = KDCircularProgress(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
             .add(to: self.view)
             .layout(snpMaker: { (make) in
@@ -152,7 +155,21 @@ class ViewController: UIViewController {
                 view.setTitle("+200", for: .normal)
                 view.addTarget(self, action: #selector(add200), for: .touchUpInside)
             })
+        
+        
+        // setting button
+        CustomedButton(frame: CGRect(x: 100, y: 300, width: 30, height: 30), color: themeColor!)
+            .add(to: self.view)
+            .layout { (make) in
+                make.right.equalToSuperview().offset(-25)
+                make.top.equalToSuperview().offset(40)
+                make.width.height.equalTo(30)
+        }.config { (view) in
+            view.setTitle("!", for: .normal)
+            view.layer.borderWidth =  1
 
+            view.addTarget(self, action: #selector(goToSetting), for: .touchUpInside)
+        }
     }
     
     func add50() {
@@ -171,11 +188,15 @@ class ViewController: UIViewController {
     func reset() {
         changeAmountTo(amount: 0)
     }
+    func goToSetting() {
+        let setting = SettingViewController()
+        self.present(setting, animated: true, completion: nil)
+    }
     func changeAmountTo(amount: Int) {
         self.totalAmount = amount
         moveCircle()
         amountLabel?.text = String(amount)
-        changeCoreDataAmountTo(newAmount: totalAmount)
+        changeCoreDataDrinkingAmountTo(newAmount: totalAmount)
     }
     
     func moveCircle() {
@@ -184,61 +205,7 @@ class ViewController: UIViewController {
             print("change to \(degree)")
         })
     }
-    
-    func getAmount() -> Int {
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
-        var num = 0
-        
-        do {
-            let fetchedObjects = try context.fetch(fetchRequest)
 
-            //遍历查询的结果
-            for info in fetchedObjects{
-                print("id=\(info.drinkingAmount)")
-                num = Int(info.drinkingAmount)
-            }
-        }
-        catch {
-            fatalError("不能保存：\(error)")
-        }
-        
-        return num
-    }
-    
-    func changeCoreDataAmountTo(newAmount: Int?) {
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let context = app.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
-        
-        do {
-            let fetchedObjects = try context.fetch(fetchRequest)
-            for info in fetchedObjects{
-                print("id=\(info.drinkingAmount)")
-                
-                info.drinkingAmount = Int16(newAmount!)
-                try context.save()
-            }
-            
-        } catch {
-            fatalError("不能保存：\(error)")
-        }
-
-        
-//        let amount = NSEntityDescription.insertNewObject(forEntityName: "Amount",
-//                                                       into: context) as! Amount
-//        amount.drinkingAmount = newAmount
-//        
-//        do {
-//            try context.save()
-//            print("保存成功！")
-//        } catch {
-//            fatalError("不能保存：\(error)")
-//        }
-    }
 
 }
 
@@ -250,6 +217,7 @@ class CustomedButton: UIButton {
         self.layer.borderColor = color.cgColor
         self.setTitleColor(color, for: .normal)
         self.tintColor = color
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
     }
     
     required init?(coder aDecoder: NSCoder) {

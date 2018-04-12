@@ -1,15 +1,18 @@
 PODS:
   - KDCircularProgress (1.5.2)
   - SnapKit (3.1.2)
+  - TTRangeSlider (1.0.5)
 
 DEPENDENCIES:
   - KDCircularProgress
   - SnapKit (= 3.1.2)
+  - TTRangeSlider
 
 SPEC CHECKSUMS:
   KDCircularProgress: 12f677b2deb02409ab48c6cae1898d146b8ad549
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  TTRangeSlider: 2f2ce4a33b32bb323c6575b9f5161c4664459c58
 
-PODFILE CHECKSUM: f0f01727d3e00b957a1a0f95d1b282b57ceb643c
+PODFILE CHECKSUM: 41d668dcb251ff61da56435ca465617533d2f823
 
 COCOAPODS: 1.1.1

@@ -15,6 +15,7 @@
 		DE12AF3E207F577F008841AB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE12AF3D207F577F008841AB /* Extensions.swift */; };
 		DE12AF44207F5EAE008841AB /* drink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE12AF42207F5EAE008841AB /* drink.xcdatamodeld */; };
 		DE3449A1207F9CC700E5E5EE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3449A0207F9CC700E5E5EE /* icon.png */; };
+		DE3449A6207FA5B300E5E5EE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3449A5207FA5B300E5E5EE /* SettingViewController.swift */; };
 		F3C307E6FC20338F05B4A93E /* Pods_drink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7AB57C46BC1C3234B0A2BA6 /* Pods_drink.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		DE12AF43207F5EAE008841AB /* drink.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = drink.xcdatamodel; sourceTree = "<group>"; };
 		DE3449A0207F9CC700E5E5EE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DE3449A2207F9CE400E5E5EE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = drink/Resources/icon.png; sourceTree = "<group>"; };
+		DE3449A5207FA5B300E5E5EE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ECE2F36F2702447C850BF405 /* Pods-drink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drink.release.xcconfig"; path = "Pods/Target Support Files/Pods-drink/Pods-drink.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				DE34499F207F9CC700E5E5EE /* Resources */,
 				DE12AF2B207F55BD008841AB /* AppDelegate.swift */,
 				DE12AF2D207F55BD008841AB /* ViewController.swift */,
+				DE3449A5207FA5B300E5E5EE /* SettingViewController.swift */,
 				DE12AF2F207F55BD008841AB /* Main.storyboard */,
 				DE12AF32207F55BD008841AB /* Assets.xcassets */,
 				DE12AF34207F55BD008841AB /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE3449A6207FA5B300E5E5EE /* SettingViewController.swift in Sources */,
 				DE12AF2E207F55BD008841AB /* ViewController.swift in Sources */,
 				DE12AF3E207F577F008841AB /* Extensions.swift in Sources */,
 				DE12AF44207F5EAE008841AB /* drink.xcdatamodeld in Sources */,
