@@ -100,9 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+let app = UIApplication.shared.delegate as! AppDelegate
+let context = app.persistentContainer.viewContext
+
+
 func getDrinkingAmount() -> Int {
-    let app = UIApplication.shared.delegate as! AppDelegate
-    let context = app.persistentContainer.viewContext
     
     let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
     var num = 0
@@ -123,9 +125,7 @@ func getDrinkingAmount() -> Int {
 }
 
 func getTotalAmount() -> Int {
-    let app = UIApplication.shared.delegate as! AppDelegate
-    let context = app.persistentContainer.viewContext
-    
+   
     let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
     var num = 0
     
@@ -146,9 +146,6 @@ func getTotalAmount() -> Int {
 }
 
 func changeCoreDataDrinkingAmountTo(newAmount: Int?) {
-    let app = UIApplication.shared.delegate as! AppDelegate
-    let context = app.persistentContainer.viewContext
-    
     let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
     
     do {
@@ -164,9 +161,7 @@ func changeCoreDataDrinkingAmountTo(newAmount: Int?) {
 }
 
 func changeCoreDataTotalAmountTo(newAmount: Int?) {
-    let app = UIApplication.shared.delegate as! AppDelegate
-    let context = app.persistentContainer.viewContext
-    
+  
     let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
     
     do {
@@ -181,6 +176,38 @@ func changeCoreDataTotalAmountTo(newAmount: Int?) {
     } catch {
         fatalError("不能保存：\(error)")
     }
+}
+
+func deleteAll() {
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        for info in fetchedObjects{
+            context.delete(info)
+            try context.save()
+        }
+        
+    } catch {
+        fatalError("不能删除：\(error)")
+    }
+}
+
+func hasData() -> Bool {
+    let fetchRequest = NSFetchRequest<Amount>(entityName:"Amount")
+    var f = false
+    
+    do {
+        let fetchedObjects = try context.fetch(fetchRequest)
+        for _ in fetchedObjects{
+            f = true
+            print("hasData")
+        }
+        
+    } catch {
+        fatalError("不能删除：\(error)")
+    }
+    return f
 }
 
 

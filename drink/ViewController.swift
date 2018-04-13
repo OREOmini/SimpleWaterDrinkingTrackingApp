@@ -29,9 +29,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let ud = UserDefaults.standard
         let firstLaunch:Bool = ud.bool(forKey: "Launched");
-        if(!firstLaunch){
+        if(!firstLaunch && !hasData()){
             //第一次启动
             print("first")
+            deleteAll()
             let app = UIApplication.shared.delegate as! AppDelegate
             let context = app.persistentContainer.viewContext
             
