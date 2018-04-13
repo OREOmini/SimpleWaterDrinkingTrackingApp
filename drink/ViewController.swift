@@ -13,6 +13,7 @@ import CoreData
 
 var CONCRETE:UIColor = hexStringToUIColor(hex: "#95A5A6")
 var ASBESTOS:UIColor = hexStringToUIColor(hex: "#7F8C8D")
+var TEAL200:UIColor = hexStringToUIColor(hex: "#80CBC4")
 
 var themeColor:UIColor? = .lightGray
 
@@ -201,7 +202,13 @@ class ViewController: UIViewController {
     }
     
     func moveCircle() {
-        let degree = Double(Double(totalAmount!) / Double(standardAmount)) * 360
+        let ratio = Double(Double(totalAmount!) / Double(standardAmount))
+        let degree = ratio * 360
+        if (ratio >= 1) {
+            circleView?.trackColor = TEAL200
+        } else {
+            circleView?.trackColor = themeColor!
+        }
         circleView?.animate(toAngle: Double(degree), duration: 1, completion: { (completion) in
             print("change to \(degree)")
         })
